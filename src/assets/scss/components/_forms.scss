@@ -1,0 +1,36 @@
+.form-control {
+  margin-bottom: 15px;
+  label {
+    display: block;
+    font-size: 13px;
+  }
+
+  input {
+    padding: 8px 12px;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+  }
+}
+
+.form-invalid {
+  label {
+    color: red;
+  }
+
+  input {
+    box-shadow:0 0 3px red;
+    border-color: red;
+  }
+
+  .form-error {
+    display: block;
+  }
+}
+
+.form-error {
+  display: none;
+  color: red;
+  font-size: 11px;
+  margin-top: 2px;
+}

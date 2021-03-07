@@ -1,0 +1,33 @@
+<div class="signup">
+  <div class="signup__box">
+    <h3>Register</h3>
+    <form (submit)="onSubmit()" [formGroup]="signupForm">
+      <div class="form-control" [ngClass]="{'form-invalid': isFieldValid(signupForm.get('firstName')) }">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName">
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.firstName.hasError('required')">Field is required</span>
+      </div>
+      <div class="form-control" [ngClass]="{'form-invalid': isFieldValid(signupForm.get('lastName')) }">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName">
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.lastName.hasError('required')">Field is required</span>
+      </div>
+      <div class="form-control" [ngClass]="{'form-invalid': isFieldValid(signupForm.get('email')) }">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email">
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.email.hasError('required')">Field is required</span>
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.email.hasError('email')">Email format is not correct</span>
+      </div>
+      <div class="form-control" [ngClass]="{'form-invalid': isFieldValid(signupForm.get('password')) }">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password">
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.password.hasError('required')">Field is required</span>
+        <span class="form-error" *ngIf="signupForm.touched && !signupForm.controls.password.hasError('minlength')">Minimum 8 characters</span>
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.password.hasError('hasUpperCaseAndLowerCase')">Needs to have at least one uppercase and one lowercase letter</span>
+        <span class="form-error" *ngIf="signupForm.touched && signupForm.controls.password.hasError('containsFirstOrLastName')">Password cannot contain first or last name</span>
+      </div>
+      <p class="signup__msg-success" *ngIf="isRegistered">We sent you a verification link.</p>
+      <button class="btn" type="submit" [disabled]="loading">Submit</button>
+    </form>
+  </div>
+</div>

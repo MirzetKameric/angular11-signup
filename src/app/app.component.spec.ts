@@ -26,10 +26,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('fedex');
   });
 
-  it('should render title', () => {
+  it('should have header, footer and content', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('fedex app is running!');
+    expect(compiled.querySelector('.header')).toBeDefined();
+    expect(compiled.querySelector('.content')).toBeDefined();
+    expect(compiled.querySelector('.footer')).toBeDefined();
   });
 });
